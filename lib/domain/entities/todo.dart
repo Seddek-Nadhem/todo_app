@@ -13,6 +13,21 @@ class Todo extends Equatable {
     this.isCompleted = false,
   });
 
+  /// Returns a new instance of Todo with optional updated values.
+  Todo copyWith({
+    int? id,
+    String? title,
+    String? description,
+    bool? isCompleted,
+  }) {
+    return Todo(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      isCompleted: isCompleted ?? this.isCompleted,
+    );
+  }
+
   @override
   List<Object?> get props => [id, title, description, isCompleted];
 }
