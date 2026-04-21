@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class TodoEntity extends Equatable {
+class Todo extends Equatable {
   final int? id;
   final String title;
   final String description;
   final bool isCompleted;
 
-  const TodoEntity({
+  const Todo({
     this.id,
     required this.title,
     required this.description,
