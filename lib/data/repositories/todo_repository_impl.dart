@@ -36,5 +36,6 @@ class TodoRepositoryImpl implements TodoRepository {
       description: todo.description,
       isCompleted: todo.isCompleted,
     );
+    await localDataSource.updateTodo(model);
   }
 }
