@@ -22,8 +22,10 @@ class TodoCubit extends Cubit<TodoState> {
   // --- Functions ---
 
   // 1. Fetch all todos
-  Future<void> loadTodos() async {
-    emit(TodoLoading());
+  Future<void> loadTodos({bool isSilent = false}) async {
+    if (!isSilent) {
+      emit(TodoLoading());
+    }
     try {
       final todos = await getTodosUseCase();
       emit(TodoLoaded(todos));
@@ -35,13 +37,10 @@ class TodoCubit extends Cubit<TodoState> {
   // 2. Add a new todo
   Future<void> addTodo(String title, String description) async {
     try {
-      final newTodo = Todo(
-        title: title,
-        description: description,
-      );
+      final newTodo = Todo(title: title, description: description);
       await addTodoUseCase(newTodo);
       // Refresh the list after adding
-      await loadTodos();
+      await loadTodos(isSilent: true);
     } catch (e) {
       emit(TodoError("Could not add task."));
     }
@@ -54,7 +53,7 @@ class TodoCubit extends Cubit<TodoState> {
       final updatedTodo = todo.copyWith(isCompleted: !todo.isCompleted);
       await updateTodoUseCase(updatedTodo);
       // Refresh the list to reflect changes
-      await loadTodos();
+      await loadTodos(isSilent: true);
     } catch (e) {
       emit(TodoError("Could not update task."));
     }
@@ -64,7 +63,7 @@ class TodoCubit extends Cubit<TodoState> {
   Future<void> deleteTodo(int id) async {
     try {
       await deleteTodoUseCase(id);
-      await loadTodos();
+      await loadTodos(isSilent: true);
     } catch (e) {
       emit(TodoError("Could not delete task."));
     }
