@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/presentation/cubits/todo_cubit.dart';
 import 'package:todo_app/presentation/cubits/todo_state.dart';
+import 'package:todo_app/presentation/widgets/todo_bottom_sheet.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -45,7 +46,15 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // We will implement the Add Todo dialog in the next step
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled:
+                true, // Allows the sheet to move up with the keyboard
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            builder: (context) => const TodoBottomSheet(),
+          );
         },
         label: const Text('Add Task'),
         icon: const Icon(Icons.add),
