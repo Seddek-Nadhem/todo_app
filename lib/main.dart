@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/service_locator.dart' as di;
 import 'package:todo_app/presentation/cubits/todo_cubit.dart';
+import 'package:todo_app/presentation/pages/home_page.dart';
 
 void main() async {
   // Ensure Flutter bindings are initialized before calling native code (SQLite)
@@ -32,14 +33,7 @@ class TodoApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const Scaffold(
-          body: Center(
-            child: Text(
-              'Logic is Ready!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
+        home: const HomePage(),
       ),
     );
   }
