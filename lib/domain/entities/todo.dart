@@ -9,7 +9,7 @@ class Todo extends Equatable {
   const Todo({
     this.id,
     required this.title,
-    required this.description,
+    this.description = '',
     this.isCompleted = false,
   });
 
