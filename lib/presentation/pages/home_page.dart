@@ -28,7 +28,40 @@ class HomePage extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is TodoLoaded) {
             if (state.todos.isEmpty) {
-              return const Center(child: Text("No tasks yet. Add one!"));
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/empty_state.png',
+                        height: 250,
+                        fit: BoxFit.contain,
+                      ),
+                      const SizedBox(height: 32),
+                      const Text(
+                        "All caught up!",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        "You don't have any tasks right now.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[600],
+                          height: 1.5, // Better readability
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             }
             return ListView.separated(
               padding: const EdgeInsets.all(16),
