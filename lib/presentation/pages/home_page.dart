@@ -35,7 +35,40 @@ class HomePage extends StatelessWidget {
               separatorBuilder: (context, index) => const SizedBox(height: 12),
               itemBuilder: (context, index) {
                 final todo = state.todos[index];
-                return _TodoCard(todo: todo);
+
+                return Dismissible(
+                  // 1. Unique key is required. We use the ID from the database.
+                  key: Key(todo.id.toString()),
+
+                  // 2. Swipe direction (Right to Left)
+                  direction: DismissDirection.startToEnd,
+
+                  // 3. The red background that appears behind the card
+                  background: Container(
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.redAccent,
+                      borderRadius: BorderRadius.circular(
+                        16,
+                      ), // Match your card's radius
+                    ),
+                    child: const Icon(Icons.delete, color: Colors.white),
+                  ),
+
+                  // 4. The logic: what happens when swiped
+                  onDismissed: (direction) {
+                    // Access the Cubit and call delete
+                    context.read<TodoCubit>().deleteTodo(todo.id!);
+
+                    // Show a quick feedback message
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("${todo.title} deleted")),
+                    );
+                  },
+
+                  child: _TodoCard(todo: todo),
+                );
               },
             );
           } else if (state is TodoError) {
