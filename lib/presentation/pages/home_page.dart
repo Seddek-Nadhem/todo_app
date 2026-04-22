@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/domain/entities/todo.dart';
 import 'package:todo_app/presentation/cubits/todo_cubit.dart';
 import 'package:todo_app/presentation/cubits/todo_state.dart';
 import 'package:todo_app/presentation/widgets/todo_bottom_sheet.dart';
@@ -98,7 +99,7 @@ class HomePage extends StatelessWidget {
 
 // Separate Widget for the individual Todo Card
 class _TodoCard extends StatelessWidget {
-  final dynamic todo; // Using dynamic for now, will map to Todo entity
+  final Todo todo;
   const _TodoCard({required this.todo});
 
   @override
@@ -116,6 +117,17 @@ class _TodoCard extends StatelessWidget {
         ],
       ),
       child: ListTile(
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            // We pass the current todo so the fields are pre-filled!
+            builder: (context) => TodoBottomSheet(todo: todo),
+          );
+        },
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         title: Text(
           todo.title,
