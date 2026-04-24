@@ -16,6 +16,8 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
 
+  String? _titleErrorText;
+
   @override
   void initState() {
     super.initState();
@@ -52,6 +54,10 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
         );
       }
       Navigator.pop(context); // Close the sheet
+    } else {
+      setState(() {
+        _titleErrorText = 'Title is Required!';
+      });
     }
   }
 
@@ -76,11 +82,18 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
           const SizedBox(height: 20),
           TextField(
             controller: _titleController,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Title',
               border: OutlineInputBorder(),
+              errorText: _titleErrorText,
             ),
             autofocus: true,
+            onChanged: (value) {
+              // Clear the red error as soon as they start typing
+              if (_titleErrorText != null) {
+                setState(() => _titleErrorText = null);
+              }
+            },
           ),
           const SizedBox(height: 12),
           TextField(
