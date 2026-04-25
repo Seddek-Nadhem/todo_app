@@ -6,6 +6,7 @@ import 'package:todo_app/domain/usecases/add_todo.dart';
 import 'package:todo_app/domain/usecases/delete_todo.dart';
 import 'package:todo_app/domain/usecases/get_todos.dart';
 import 'package:todo_app/domain/usecases/update_todo.dart';
+import 'package:todo_app/presentation/cubits/locale_cubit.dart';
 import 'package:todo_app/presentation/cubits/todo_cubit.dart';
 
 final sl = GetIt.instance; // sl stands for Service Locator
@@ -24,6 +25,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AddTodo(sl()));
   sl.registerLazySingleton(() => UpdateTodo(sl()));
   sl.registerLazySingleton(() => DeleteTodo(sl()));
+
+  sl.registerLazySingleton(() => LocaleCubit());
 
   // 3. Repository Implementation
   sl.registerLazySingleton<TodoRepository>(
