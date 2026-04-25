@@ -132,7 +132,7 @@ class HomePage extends StatelessWidget {
             builder: (context) => const TodoBottomSheet(),
           );
         },
-        label: const Text('Add Task'),
+        label: Text(context.l10n.addTask),
         icon: const Icon(Icons.add),
       ),
     );
