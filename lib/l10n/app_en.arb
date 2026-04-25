@@ -1,0 +1,8 @@
+{
+  "appTitle": "My Tasks",
+  "addTask": "Add New Task",
+  "titleLabel": "Title",
+  "descriptionLabel": "Description",
+  "save": "Save Task",
+  "emptyStateMessage": "All caught up!"
+}

@@ -1,0 +1,8 @@
+{
+  "appTitle": "مهامي",
+  "addTask": "إضافة مهمة جديدة",
+  "titleLabel": "عنوان",
+  "descriptionLabel": "تفاصيل",
+  "save": "حفظ",
+  "emptyStateMessage": "لقد أنجزت كل مهامك!"
+}
