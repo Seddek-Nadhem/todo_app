@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/core/extensions/build_context_extension.dart';
 import 'package:todo_app/domain/entities/todo.dart';
+import 'package:todo_app/presentation/cubits/locale_cubit.dart';
 import 'package:todo_app/presentation/cubits/todo_cubit.dart';
 import 'package:todo_app/presentation/cubits/todo_state.dart';
 import 'package:todo_app/presentation/widgets/todo_bottom_sheet.dart';
@@ -13,13 +15,20 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[50], // Soft background color
       appBar: AppBar(
-        title: const Text(
-          'My Tasks',
+        title: Text(
+          context.l10n.appTitle,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
-        // since deleting centerTitle: false gives us the same result as it is now, why not just delete it?
         centerTitle: false,
         elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<LocaleCubit>().toggleLanguages();
+            },
+            icon: Icon(Icons.language),
+          ),
+        ],
         backgroundColor: Colors.transparent,
       ),
       body: BlocBuilder<TodoCubit, TodoState>(
