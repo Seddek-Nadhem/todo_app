@@ -1,8 +1,11 @@
 {
   "appTitle": "My Tasks",
   "addTask": "Add New Task",
+  "editTask": "Edit Task",
   "titleLabel": "Title",
   "descriptionLabel": "Description",
   "save": "Save Task",
-  "emptyStateMessage": "All caught up!"
+  "emptyStateMessage": "All caught up!",
+  "emptyStateSub": "You don't have any tasks right now.",
+  "titleRequiredError": "Title is required"
 }

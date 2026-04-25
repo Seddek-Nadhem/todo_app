@@ -15,6 +15,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addTask => 'إضافة مهمة جديدة';
 
   @override
+  String get editTask => 'تعديل';
+
+  @override
   String get titleLabel => 'عنوان';
 
   @override
@@ -25,4 +28,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get emptyStateMessage => 'لقد أنجزت كل مهامك!';
+
+  @override
+  String get emptyStateSub => 'ليس لديك أي مهام حالياً. استمتع بوقتك!';
+
+  @override
+  String get titleRequiredError => 'العنوان مطلوب';
 }

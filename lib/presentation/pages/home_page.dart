@@ -49,8 +49,8 @@ class HomePage extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                       const SizedBox(height: 32),
-                      const Text(
-                        "All caught up!",
+                      Text(
+                        context.l10n.emptyStateMessage,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        "You don't have any tasks right now.",
+                        context.l10n.emptyStateSub,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,

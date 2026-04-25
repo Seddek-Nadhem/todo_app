@@ -1,8 +1,11 @@
 {
   "appTitle": "مهامي",
   "addTask": "إضافة مهمة جديدة",
+  "editTask": "تعديل",
   "titleLabel": "عنوان",
   "descriptionLabel": "تفاصيل",
   "save": "حفظ",
-  "emptyStateMessage": "لقد أنجزت كل مهامك!"
+  "emptyStateMessage": "لقد أنجزت كل مهامك!",
+  "emptyStateSub": "ليس لديك أي مهام حالياً. استمتع بوقتك!",
+  "titleRequiredError": "العنوان مطلوب"
 }

@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addTask => 'Add New Task';
 
   @override
+  String get editTask => 'Edit Task';
+
+  @override
   String get titleLabel => 'Title';
 
   @override
@@ -25,4 +28,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emptyStateMessage => 'All caught up!';
+
+  @override
+  String get emptyStateSub => 'You don\'t have any tasks right now.';
+
+  @override
+  String get titleRequiredError => 'Title is required';
 }

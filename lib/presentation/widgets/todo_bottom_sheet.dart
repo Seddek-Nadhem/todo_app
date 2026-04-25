@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/core/extensions/build_context_extension.dart';
 import 'package:todo_app/domain/entities/todo.dart';
 import 'package:todo_app/presentation/cubits/todo_cubit.dart';
 
@@ -56,7 +57,7 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
       Navigator.pop(context); // Close the sheet
     } else {
       setState(() {
-        _titleErrorText = 'Title is Required!';
+        _titleErrorText = context.l10n.titleRequiredError;
       });
     }
   }
@@ -76,16 +77,16 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.todo == null ? 'Add New Task' : 'Edit Task',
+            widget.todo == null ? context.l10n.addTask : context.l10n.editTask,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
           TextField(
             controller: _titleController,
             decoration: InputDecoration(
-              labelText: 'Title',
+              labelText: context.l10n.titleLabel,
               border: OutlineInputBorder(),
-              errorText: _titleErrorText,
+              errorText: context.l10n.titleRequiredError,
             ),
             autofocus: true,
             onChanged: (value) {
@@ -98,8 +99,8 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
           const SizedBox(height: 12),
           TextField(
             controller: _descriptionController,
-            decoration: const InputDecoration(
-              labelText: 'Description',
+            decoration: InputDecoration(
+              labelText: context.l10n.descriptionLabel,
               border: OutlineInputBorder(),
             ),
             maxLines: 3,
@@ -117,7 +118,7 @@ class _TodoBottomSheetState extends State<TodoBottomSheet> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text('Save Task', style: TextStyle(fontSize: 16)),
+              child: Text(context.l10n.save, style: TextStyle(fontSize: 16)),
             ),
           ),
           const SizedBox(height: 20),

@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Add New Task'**
   String get addTask;
 
+  /// No description provided for @editTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Task'**
+  String get editTask;
+
   /// No description provided for @titleLabel.
   ///
   /// In en, this message translates to:
@@ -133,6 +139,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All caught up!'**
   String get emptyStateMessage;
+
+  /// No description provided for @emptyStateSub.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have any tasks right now.'**
+  String get emptyStateSub;
+
+  /// No description provided for @titleRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Title is required'**
+  String get titleRequiredError;
 }
 
 class _AppLocalizationsDelegate
